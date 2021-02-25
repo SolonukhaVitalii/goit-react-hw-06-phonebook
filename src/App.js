@@ -28,19 +28,19 @@ class App extends Component {
     ...INITIAL_STATE,
   };
   
-  componentDidMount() {
+  /*componentDidMount() {
     const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
     if (parsedContacts !== null) {
       this.setState({ contacts: parsedContacts });
     }
-  };
+  };*/
   
-  componentDidUpdate(prevProps, prevState) {
+  /*componentDidUpdate(prevProps, prevState) {
     const { contacts } = this.state;
     if (prevState.contacts !== contacts) {
     localStorage.setItem('contacts', JSON.stringify(contacts));
     }
-  };
+  };*/
   
   setMessage = (message) => {
     this.setState({ isVisible: true, message: message });

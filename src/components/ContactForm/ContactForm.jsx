@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import s from './ContactForm.module.css';
 import shortid from 'shortid';
+import actions from '../../redux/actions';
+import { connect } from 'react-redux';
 
 class ContactForm extends Component {
     
@@ -55,4 +57,18 @@ class ContactForm extends Component {
      }
 };
 
-export default ContactForm;
+const mapSateToProps = state => {
+    return {
+        value: state.ContactForm,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+       onSubmit: () => dispatch(actions.DD()),
+    };
+};
+
+
+
+export default connect(mapSateToProps, mapDispatchToProps)(ContactForm);

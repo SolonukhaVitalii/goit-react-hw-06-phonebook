@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './Filter.module.css';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import contactForm from '../../redux/contactForm/contactForm-actions';
 
 const Filter = ({ filter, onChange }) => (
     <div className={s.filter}>
@@ -20,4 +22,14 @@ Filter.propTypes = {
     onChange: PropTypes.func.isRequired
 };
 
-export default Filter;
+
+const mapStateToProps = (state) => ({
+    filter: state.filter
+    
+})
+
+const mapDispatchToProps = dispatch => ({
+  onChange: dispatch(contactForm.cangeFilter(e.target.value)),  
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
