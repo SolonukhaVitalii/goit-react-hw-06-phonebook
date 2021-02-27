@@ -2,7 +2,8 @@ import { configureStore, getDefaultMiddleware, combineReducers } from '@reduxjs/
 import logger from 'redux-logger';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { contactReducer } from './contactForm/contact-reducer';
+import contactsReducer from './contacts/contacts-reducer';
+import filterReducer from './contacts/contacts-reducer';
 
 const contactsPersistConfig = {
     key: 'contacts',
@@ -12,7 +13,8 @@ const contactsPersistConfig = {
 
 const middleware = [...getDefaultMiddleware(), logger];
 const rootReducer = combineReducers({
-    contact: contactReducer,
+    contact: contactsReducer,
+    filter: filterReducer,
 });
 const persistedReducer = persistReducer(contactsPersistConfig, rootReducer)
 const store = configureStore({
@@ -22,4 +24,6 @@ const store = configureStore({
 });
 const persistor = persistStore(store);
 
-export default { store, persistor };
+const Store = { store, persistor };
+
+export default Store;

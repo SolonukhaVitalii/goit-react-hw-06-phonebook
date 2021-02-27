@@ -1,16 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import actions from '../../redux/contacts/contacts-actions';
 import s from './Filter.module.css';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import contactForm from '../../redux/contactForm/contactForm-actions';
 
-const Filter = ({ filter, onChange }) => (
+
+const Filter = ({ value, onChange }) => (
     <div className={s.filter}>
         <label className={s.label} htmlFor="">Find contacts by name
             <input className={s.input}
                 type="text"
                 name="filter"
-                value={filter}
+                value={value}
                 onChange={onChange}
             />
         </label>
@@ -18,18 +19,16 @@ const Filter = ({ filter, onChange }) => (
 );
 
 Filter.propTypes = {
-    filter: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
 };
 
-
 const mapStateToProps = (state) => ({
-    filter: state.filter
-    
-})
+    value: state.contacts.filter,
+});
 
 const mapDispatchToProps = dispatch => ({
-  onChange: dispatch(contactForm.cangeFilter(e.target.value)),  
-})
+    onChange: (e) => dispatch(actions.changeFilter(e.target.value)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

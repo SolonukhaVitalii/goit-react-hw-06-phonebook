@@ -1,10 +1,49 @@
-import React, { Component } from 'react';
-import s from './ContactForm.module.css';
-import shortid from 'shortid';
-import actions from '../../redux/actions';
+import React from 'react';
 import { connect } from 'react-redux';
+import actions from '../../redux/contacts/contacts-actions';
+import s from './ContactForm.module.css';
+//import shortid from 'shortid';
 
-class ContactForm extends Component {
+
+const ContactForm = (name, number, onChange, ) => {
+    return (
+        <form onSubmit={this.handleSubmit} className={s.form}>
+            <label htmlFor={this.nameInputId} className={s.label}>
+                Name <input className={s.input}
+                    type="text"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                    id={this.nameInputId}
+                />
+            </label>
+            <label htmlFor={this.numberInputId} className={s.label}>
+                Number <input className={s.input}
+                    type="text"
+                    name="number"
+                    value={this.state.number}
+                    onChange={this.handleChange}
+                    id={this.numberInputId}
+                />
+            </label>
+            <button type="submit" className={s.button}>Add contact</button>
+        </form>
+    );
+};
+
+
+const mapStateToProps = (state) => ({
+    contacts: state.filter,
+});
+
+const mapDispatchToProps = dispatch => ({
+    onChange: () => dispatch(actions.handleChange()),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+
+/*class ContactForm extends Component {
     
     state = {
         name: '',
@@ -57,18 +96,4 @@ class ContactForm extends Component {
      }
 };
 
-const mapSateToProps = state => {
-    return {
-        value: state.ContactForm,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-       onSubmit: () => dispatch(actions.DD()),
-    };
-};
-
-
-
-export default connect(mapSateToProps, mapDispatchToProps)(ContactForm);
+export default ContactForm;*/
