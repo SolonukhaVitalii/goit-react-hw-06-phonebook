@@ -13,7 +13,7 @@ const contactsPersistConfig = {
 
 const middleware = [...getDefaultMiddleware(), logger];
 const rootReducer = combineReducers({
-    contact: contactsReducer,
+    contacts: contactsReducer,
     filter: filterReducer,
 });
 const persistedReducer = persistReducer(contactsPersistConfig, rootReducer)

@@ -5,8 +5,7 @@ import s from './ContactForm.module.css';
 //import shortid from 'shortid';
 
 
-const ContactForm = (name, number, onChange, ) => {
-    return (
+const ContactForm = ({ onAddContact }) => (
         <form onSubmit={this.handleSubmit} className={s.form}>
             <label htmlFor={this.nameInputId} className={s.label}>
                 Name <input className={s.input}
@@ -29,15 +28,14 @@ const ContactForm = (name, number, onChange, ) => {
             <button type="submit" className={s.button}>Add contact</button>
         </form>
     );
-};
 
 
 const mapStateToProps = (state) => ({
-    contacts: state.filter,
+    contacts: state.addContact(),
 });
 
 const mapDispatchToProps = dispatch => ({
-    onChange: () => dispatch(actions.handleChange()),
+    onAddContact: (contact) => dispatch(actions.addContact(contact)),
 });
 
 
