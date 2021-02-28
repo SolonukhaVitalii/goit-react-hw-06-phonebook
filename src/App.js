@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
@@ -21,7 +20,7 @@ class App extends Component {
     ...INITIAL_STATE,
   };
   
-  /*componentDidMount() {
+  componentDidMount() {
     const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
     if (parsedContacts !== null) {
       this.setState({ contacts: parsedContacts });
@@ -33,7 +32,7 @@ class App extends Component {
     if (prevState.contacts !== contacts) {
     localStorage.setItem('contacts', JSON.stringify(contacts));
     }
-  };*/
+  };
   
   setMessage = (message) => {
     this.setState({ isVisible: true, message: message });
@@ -44,7 +43,7 @@ class App extends Component {
     }, 1500);
   };
 
-  addContact = ({ name, number }) => {
+  /*addContact = ({ name, number }) => {
     const searchSameName = this.state.contacts
       .map((cont) => cont.name)
       .includes(name);
@@ -69,30 +68,29 @@ class App extends Component {
         contacts: [contact, ...prevState.contacts],
       }));
     }
-  };
+  };*/
   
-  changeFilter = ({ target: { value } }) => {
+  /*changeFilter = ({ target: { value } }) => {
     this.setState({ filter: value });
-  };
+  }; в actions*/
 
-  filterContacts = () => {
+  /*filterContacts = () => {
     const { contacts, filter } = this.state;
    
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(filter.toLowerCase())
     );
-  };
+  }; в ContactList*/ 
 
-  deleteContact = (id) => {
+  /*deleteContact = (id) => {
     this.setState((state) => ({
       contacts: state.contacts.filter((contact) => contact.id !== id),
     }));
     this.setState({ filter: "" })
-  };
+  }; в ContactList*/
 
   render() {
-    const { contacts, filter, isVisible, message } = this.state;
-    
+    const { contacts, isVisible, message } = this.state;
     return (
       <div className="app">
         <CSSTransition in timeout={500} classNames={titleTransition} appear>
@@ -107,21 +105,21 @@ class App extends Component {
           <Alert message={message} />
         </CSSTransition>
         <ContactForm
-          onSubmit={this.addContact}
-          onSetMessage={this.setMessage}
+          //onSubmit={this.addContact}
+          //onSetMessage={this.setMessage}
         />
-        <CSSTransition in={contacts.length > 1}
+        <CSSTransition /*in={contacts.length > 1}*/
           timeout={250}
           classNames={popTransition}
           unmountOnExit>
           <Filter
-            filter={filter}
-            onChange={this.changeFilter}
+            //filter={filter}
+            //onChange={this.changeFilter}
           />
         </CSSTransition>
           <ContactList
-            contacts={this.filterContacts()}
-            onDeleteContact={this.deleteContact}
+            //contacts={this.filterContacts()}
+            //onDeleteContact={this.deleteContact}
           />
       </div>
     );

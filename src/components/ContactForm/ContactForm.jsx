@@ -1,51 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import actions from '../../redux/contacts/contacts-actions';
+import React, { Component } from 'react';
 import s from './ContactForm.module.css';
-//import shortid from 'shortid';
+import shortid from 'shortid';
 
-
-const ContactForm = ({ onAddContact }) => (
-        <form onSubmit={this.handleSubmit} className={s.form}>
-            <label htmlFor={this.nameInputId} className={s.label}>
-                Name <input className={s.input}
-                    type="text"
-                    name="name"
-                    value={this.state.name}
-                    onChange={this.handleChange}
-                    id={this.nameInputId}
-                />
-            </label>
-            <label htmlFor={this.numberInputId} className={s.label}>
-                Number <input className={s.input}
-                    type="text"
-                    name="number"
-                    value={this.state.number}
-                    onChange={this.handleChange}
-                    id={this.numberInputId}
-                />
-            </label>
-            <button type="submit" className={s.button}>Add contact</button>
-        </form>
-    );
-
-
-const mapStateToProps = (state) => ({
-    contacts: state.addContact(),
-});
-
-const mapDispatchToProps = dispatch => ({
-    onAddContact: (contact) => dispatch(actions.addContact(contact)),
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
-
-/*class ContactForm extends Component {
+class ContactForm extends Component {
     
     state = {
         name: '',
-        number: ''
+        number: '',
     }
 
     nameInputId = shortid.generate();
@@ -56,16 +17,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
         this.setState({ [name]: value });
     };
     
-    handleSubmit = e => {
+    /*handleSubmit = e => {
         e.preventDefault();
         this.props.onSubmit(this.state);
         this.reset();
-    };
+    };*/
     
     reset = () => {
         this.setState({ name: '', number: '' })
     };
-    
     
     render() {
         return (
@@ -94,4 +54,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
      }
 };
 
-export default ContactForm;*/
+export default ContactForm;
