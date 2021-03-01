@@ -19,16 +19,21 @@ const contactsPersistConfig = {
     blacklist: ['filter'],
 };
 
-const middleware = [...getDefaultMiddleware({
+const middleware = [
+    ...getDefaultMiddleware({
         serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],},
-}), logger];
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+    }),
+    logger,
+];
 
 const store = configureStore({
-    reducer: { contacts: persistReducer(contactsPersistConfig, contactsReducer),},
+    reducer: { contacts: persistReducer(contactsPersistConfig, contactsReducer)},
     middleware,
     devTools: process.env.NODE_ENV === 'development',
 });
+
 const persistor = persistStore(store);
 
 const Store = { store, persistor };

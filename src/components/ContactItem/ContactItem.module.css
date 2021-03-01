@@ -1,0 +1,35 @@
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 30px;
+  line-height: 1.5;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin: 10px 0;
+  height: 80px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.delete {
+  font-size: 14px;
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: red;
+}
+
+.delete:focus,
+.delete:hover {
+  outline: none;
+  background-color: #df0101;
+}
+
+.delete:active {
+  background-color: rgb(0, 149, 255);
+}
